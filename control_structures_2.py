@@ -217,7 +217,7 @@
 #         print(f"This is pare number {i}")
 #     else:
 #         print(f"This is not pare number {i}")
-# -----------------------------------------------------
+# # -----------------------------------------------------
 
 # while True:
 #     number = input("Enter the number: ")
@@ -228,7 +228,7 @@
 #         number += 1
 #         if number < 0:
 #             break
-# ------------------------------------------------------
+# # ------------------------------------------------------
 
 # list_1 = ["first: ", "second: ", "third: "]
 # list_2 = ["nishang", "Metasploit", "Antak"]
@@ -249,13 +249,14 @@
 # print(len(list_2))
 # print(len(list_3))
 # print(len(list_4))
-# ------------------------------------------------------
+# # ------------------------------------------------------
 
-# dict_1 = {
-#     1: ": one",
-#     2: ": two",
-#     int("a"): ": three",
-# } це викличе помилку на рівні шнтерпритатора - ValueError.
+# # dict_1 = {
+# #     1: ": one",
+# #     2: ": two",
+# #     int("a"): ": three",
+# # } це викличе помилку на рівні шнтерпритатора - ValueError.
+# # -------------------------------------------------------
 
 # dict_1 = {
 #     1: ": one",
@@ -293,99 +294,238 @@
 #     print(f"{age} is not a nummber ")
 # # ------------------------------------------------------
 
-def print_max(a, b):
-    if a > b:
-        print(f"a 'max' ")
-    elif a == b:
-        print(f"a 'equal' b")
-    else:
-        print(f"b 'max'")
+# def print_max(a, b):
+#     if a > b:
+#         print(f"a 'max' ")
+#     elif a == b:
+#         print(f"a 'equal' b")
+#     else:
+#         print(f"b 'max'")
 
 
-print_max(3, 4)
-print_max(6, 4)
-print_max(7, 7)
-# ------------------------------------------------------
-x = 10
-y = 10
-print_max(x, y)
-# ------------------------------------------------------
+# print_max(3, 4)
+# print_max(6, 4)
+# print_max(7, 7)
+# # ------------------------------------------------------
+# x = 10
+# y = 10
+# print_max(x, y)
+# # ------------------------------------------------------
 
 
-def my_function(a, b):
-    res = a + b
-    return float(res)  # можна вказувати тип який треба повернути
+# def my_function(a, b):
+#     res = a + b
+#     return float(res)  # можна вказувати тип який треба повернути
 
 
-result = my_function(8, 2.4)
-print(f"This is result from function:{result}")
-# ------------------------------------------------------
+# result = my_function(8, 2.4)
+# print(f"This is result from function:{result}")
+# # ------------------------------------------------------
 
 
-def my_second_funk(a: int, b: int) -> int:
-    sum = a + b
-    return sum
+# def my_second_funk(a: int, b: int) -> int:
+#     sum = a + b
+#     return sum
 
 
-result_2 = my_second_funk(3, 6)
-print(f"This is my_second_func: {result_2}")
-# ------------------------------------------------------
+# result_2 = my_second_funk(3, 6)
+# print(f"This is my_second_func: {result_2}")
+# # ------------------------------------------------------
 
 
-def greetings(name: str) -> str:
-    res = f"Hello {name}"
-    return res
+# def greetings(name: str) -> str:
+#     res = f"Hello {name}"
+#     return res
 
 
-greeting = greetings("Petro")
-print(greeting)
-# ------------------------------------------------------
+# greeting = greetings("Petro")
+# print(greeting)
+# # ------------------------------------------------------
 
 
-def bool_func(number: int) -> bool:
-    return number % 2 == 0
+# def bool_func(number: int) -> bool:
+#     return number % 2 == 0
 
 
-res_3 = bool_func(7)
-print(f"This is boolian function: {res_3}")
-# ------------------------------------------------------
+# res_3 = bool_func(7)
+# print(f"This is boolian function: {res_3}")
+# # ------------------------------------------------------
 
-# imutable and immutable object
+# # imutable and immutable object
 
-# immutable
-
-
-def modify_string(original: str) -> str:
-    original = "CHANGE"
-    return original
+# # immutable
 
 
-str_original = "original"
-print(modify_string(str_original))
-print(str_original)
-# ------------------------------------------------------
-
-# mutable
+# def modify_string(original: str) -> str:
+#     original = "CHANGE"
+#     return original
 
 
-def modify_list(lst: list) -> None:
-    lst.append(4)
+# str_original = "original"
+# print(modify_string(str_original))
+# print(str_original)
+# # ------------------------------------------------------
+
+# # mutable
 
 
-my_list = [1, 2, 3]
-modify_list(my_list)
-print(f"This is modify my_list: {my_list}")
-
-# ------------------------------------------------------
+# def modify_list(lst: list) -> None:
+#     lst.append(4)
 
 
-def not_modify_list(lst: list) -> None:
-    lst = lst.copy() # для того щоб не модифікувалися дані робиться копія 
-    lst.append(4)
+# my_list = [1, 2, 3]
+# modify_list(my_list)
+# print(f"This is modify my_list: {my_list}")
+
+# # ------------------------------------------------------
 
 
-not_modify_my_list = [1, 2, 3]
-not_modify_list(not_modify_my_list)
-print(f"This is not_modify_my_list: {not_modify_my_list}")
-# ------------------------------------------------------
+# def not_modify_list(lst: list) -> None:
+#     lst = lst.copy() # для того щоб не модифікувалися дані робиться копія
+#     lst.append(4)
 
+
+# not_modify_my_list = [1, 2, 3]
+# not_modify_list(not_modify_my_list)
+# print(f"This is not_modify_my_list: {not_modify_my_list}")
+# # ------------------------------------------------------
+
+# LEGB
+
+# def func_outer():
+#     x = 2
+
+#     def func_inner():
+#         nonlocal x
+#         x = 5
+
+#     func_inner()
+#     return x
+
+# result = func_outer()
+# print(f"This is func_outer: {result}")
+# # ------------------------------------------------------
+
+# def func_keys(a, b=5, c=10):
+#     print(f"'a equal a: {a}', 'b equal b: {b}', 'c equal c: {c}'")
+
+# func_keys(3,7)
+# func_keys(25, c=24)
+# func_keys(c=50, a=100)
+# func_keys(a=333,b=555, c=777)
+# # ------------------------------------------------------
+# # Змінна кількість параметрів
+
+# def all_args(*args):
+#     for arg in args:
+#         print(arg)
+#         print(type(arg))
+
+
+# x = all_args(1, '1', True, 'Hello', False, "name")
+# # ------------------------------------------------------
+
+
+# def concat_func(*args):
+#     res = " "
+#     for arg in args:
+#         res += arg
+#     return res
+
+
+# at_end_res = concat_func("Hello ", "my ", "Friends!")
+
+# print(f"Result of function concat_func: \n{at_end_res}")
+# # -----------------------------------------
+
+# def concatenate(*strings) -> str:
+#     result = ""
+#     for arg in strings:
+#         result += arg
+#     return result
+
+# print(concatenate("Hello", " ", "world", "!"))
+# # -----------------------------------------
+# def greet(**kwargs):
+#     for key, value in kwargs.items():
+#         print(f"{key}: {value}")
+
+
+# greet(name="Petro", age=41, city="Dnipro")
+# print(type(greet))
+# # -----------------------------------------
+
+
+# def full_function(*args, **kwargs):
+#     print("Position arguments", args)
+#     print("Kye position arguments", kwargs)
+
+
+# full_function(1, False, 3, 4, True, name="John", age=21)
+# # -----------------------------------------
+
+# my_list = [1, 2, 3]
+# a, b, c = my_list
+
+# print("My list: ", a, b, c)
+
+
+# my_list_1 = [4, 5, 6]
+# d, _, f = my_list_1
+# print("My list 1 : ", d, f)
+
+
+# my_list_2 = [7, 8, 9]
+# a, *rest = my_list_2
+# print("*Rest: ", *rest)
+# # ---------------------------------------
+
+
+# def greeet(name, age, city):
+#     print(f"Your name {name}, your age {age}, your city {city}")
+
+
+# person_info = {"name": "Alice", "age": 41, "city": "Kyiv"}
+# person_info_2 = {"name": "John", "age": 60, "city": "Dnipro"}
+# greeet(**person_info)
+# greeet(**person_info_2)
+# # ---------------------------------------
+
+# Recursion
+
+# def factorial_num(n):
+#     if n == 0:
+#         return 1
+#     else:
+#         return n * factorial_num(n-1)
+
+
+# result = factorial_num(10)
+# print(result)
+
+# print(1*2*3*4*5*6*7*8*9*10)
+# # ---------------------------------------
+
+
+# def fibonacci(n):
+#     if n <= 1:
+#         return n
+#     else:
+#         return fibonacci(n-1) + fibonacci(n-2)
+
+
+# print(fibonacci(20))
+# # ---------------------------------------
+
+# def factorial(n):
+#     print("Виклик функції factorial з n = ", n)
+#     if n == 1:
+#         print("Базовий випадок, n = 1, повернення 1")
+#         return 1
+#     else:
+#         result = n * factorial(n-1)
+#         print("Повернення результату для n = ", n, ": ", result)
+#         return result
+
+# print(factorial(5))
+# # ---------------------------------------

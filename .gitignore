@@ -174,3 +174,4 @@ cython_debug/
 
 autocheck_1.py
 fizzbuzz.py
+discount.py
