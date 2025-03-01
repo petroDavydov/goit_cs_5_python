@@ -54,8 +54,8 @@
 
 # # Bool algebra
 
-# name = input("Enter Your ndme: \n")
-# age = int(input("How old are Your: \n"))
+# name = input("Enter Your name: \n")
+# age = int(input("How old are You: \n"))
 # has_driver_licence = True
 
 # if name and age >= 18 and has_driver_licence:
@@ -219,15 +219,15 @@
 #         print(f"This is not pare number {i}")
 # # -----------------------------------------------------
 
-# while True:
-#     number = input("Enter the number: ")
-#     number = int(number)
+# # while True:
+# #     number = input("Enter the number: ")
+# #     number = int(number)
 
-#     while True:
-#         print(number)
-#         number += 1
-#         if number < 0:
-#             break
+# #     while True:
+# #         print(number)
+# #         number += 1
+# #         if number < 0:
+# #             break
 # # ------------------------------------------------------
 
 # list_1 = ["first: ", "second: ", "third: "]
@@ -386,11 +386,11 @@
 
 
 # not_modify_my_list = [1, 2, 3]
-# not_modify_list(not_modify_my_list)
+# # not_modify_list(not_modify_my_list)
 # print(f"This is not_modify_my_list: {not_modify_my_list}")
 # # ------------------------------------------------------
 
-# LEGB
+# # LEGB
 
 # def func_outer():
 #     x = 2
@@ -491,7 +491,7 @@
 # greeet(**person_info_2)
 # # ---------------------------------------
 
-# Recursion
+# # Recursion
 
 # def factorial_num(n):
 #     if n == 0:

@@ -173,5 +173,7 @@ cython_debug/
 # userfile
 
 autocheck_1.py
+autocheck_2.py
+/LAB
 fizzbuzz.py
 discount.py
