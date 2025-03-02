@@ -175,5 +175,6 @@ cython_debug/
 autocheck_1.py
 autocheck_2.py
 /LAB
+/neopython_week_2_2
 fizzbuzz.py
 discount.py
