@@ -1,4 +1,7 @@
 # write
+from pathlib import Path
+from pathlib import PurePath
+import shutil
 fh = open('text.txt', 'w')
 symbols_written = fh.write("Hothing Heppend")
 print(f"This is symbol written: {symbols_written}")
@@ -109,19 +112,19 @@ fh.close()
 
 # method tell()
 
-fh =open('text.txt', 'w+')
+fh = open('text.txt', 'w+')
 fh.write("Hello Now!")
 
 position_1 = fh.tell()
-print(f"Default position: {position_1}")
+print(f"Default position method tell(): {position_1}")
 
 fh.seek(1)
 position_2 = fh.tell()
-print(f"This is seek() use: {position_2}")
+print(f"This is seek() use, method tel(): {position_2}")
 
 fh.read(2)
 position_3 = fh.tell()
-print(f"This is read() use: {position_3}")
+print(f"This is read() use method tell(): {position_3}")
 
 fh.close()
 # ---------------------
@@ -188,7 +191,6 @@ for i in numbers:
 
 # code in ASCII,UTF-8, CP1251
 
-import shutil
 res_ord = ord('a')
 print(f"This is ord() function: {res_ord}")
 
@@ -279,3 +281,62 @@ print(f"Порівняння з casefold(): {casefold_comparison}")  # True
 
 # shutil.copy("text.bin", "testshutil")
 # shutil.copytree("LAB", "testshutil")  # папка створюється автоматичн
+res_shutil = shutil.disk_usage("D:/goit_cs_5_python/testshutil")
+print(f"This is result of command shutil.disk_usage('path'): {res_shutil}")
+print(
+    f"This is result of command shutil.disk_usage('C:/'): {shutil.disk_usage("C:/")}")
+# --------------------------
+
+# pathlib, PurePath/ from pathlib import PurePath
+
+p = PurePath("/d/goit_cs_5_python/text.txt/")
+print(f"This is p.name: {p.name}")
+print(f"This is p.suffix: {p.suffix}")
+print(f"This is p.parent: {p.parent}")
+# -------------
+
+# p1 = Path("example.txt")
+# p1.write_text("Hello people now world!")
+# print(f"This is read_text() use Path:{p1.read_text()}")
+# print(f"This is exists() use Path:{p1.exists()}")
+# -----------------------------
+
+original_path = Path("/d/goit_cs_5_python/example.txt")
+print(original_path)
+
+# new_path = original_path.with_name("report.txt")
+# print(f"This is use with_name(): {new_path}")
+# ???--------------------------
+
+# with_suffix
+
+# original_path_suffix = Path("example6.txt")
+# print(original_path_suffix)
+
+# new_path_suffix = original_path_suffix.with_suffix(".md")
+# print(new_path_suffix)
+# # ----------------
+# original_path_rename = Path( "example.txt")
+
+# new_path_rename = original_path_rename.with_name("report7.txt")
+# result_rename = original_path_rename.rename(new_path_rename)
+# print(result_rename)
+# -------------------
+
+path = Path("testshutil")
+
+# Перевірка існування
+if path.exists():
+    print(f"EXEXEX {path} існує")
+
+# Перевірка, чи це директорія
+if path.is_dir():
+    print(f"DDD {path} є директорією")
+
+# Перевірка, чи це файл
+if path.is_file():
+    print(f"FFF {path} є файлом")
+# -----------------------
+
+file_path = Path('txt1.txt')
+file_path.unlink(missing_ok=False)

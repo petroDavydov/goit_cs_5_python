@@ -188,3 +188,4 @@ spam_words.py
 /example_3.tar.gz
 /example_4.tar.bz2
 /example_5.tar.xz
+/__pycache__
