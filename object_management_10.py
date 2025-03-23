@@ -1,3 +1,4 @@
+import unittest
 from collections import UserDict
 from collections import UserList
 
@@ -402,6 +403,7 @@ class Point:
             return NotImplemented
         return self.x >= other.x and self.y >= other.y
 
+
 print()
 if __name__ == "__main__":
     print(Point(0, 0) == Point(0, 0))  # True
@@ -411,4 +413,192 @@ if __name__ == "__main__":
     print(Point(0, 2) >= Point(0, 1))  # True
     print(Point(0, 0) <= Point(0, 0))  # True
 # ------------------------------------------
+
+
+class Person:
+    def __init__(self, age):
+        self.__age = age  # Пряме присвоєння значення атрибуту в конструкторі
+
+    @property
+    def age(self):
+        return self.__age  # Геттер повертає значення приватного поля
+
+    @age.setter
+    def age(self, value):
+        if value <= 0:
+            # Валідація вхідного значення
+            raise ValueError(
+                "Вік не може бути від'ємним, або дорівнювати нулю")
+        # Присвоєння валідного значення приватному полю
+        self.__age = value
+
+
+if __name__ == "__main__":
+    person = Person(10)
+    print(f"This is person.age: {person.age}")
+    person.age = 12
+    print(f"This is person.age: {person.age}")
+    person1 = Person(-10)
+    print(f"This is person.age: {person.age}")
+
+    # person.age = 0
+    # person.age = -5
+# ------------------------------------
+
+ # Необхідно в конструкторі класу спочатку значення __age встановити в None,
+ # а потім встановити в передане значення age через сетер.
+ # Це дозволить нам одразу застосувати логіку валідації, визначену в сетері,
+ # при ініціалізації об'єкта.
+
+
+class Person:
+    def __init__(self, age):
+        # Спочатку встановлюємо __age як None
+        self.__age = None
+        # Використовуємо сеттер для встановлення віку,
+        # що дозволяє валідацію вхідного значення
+        self.age = age
+
+    @property
+    def age(self):
+        # Геттер повертає значення приватного поля
+        return self.__age
+
+    @age.setter
+    def age(self, value):
+        if value < 0:
+            # Валідація вхідного значення
+            raise ValueError("Вік не може бути від'ємним")
+        # Присвоєння валідного значення приватному полю
+        self.__age = value
+
+
+if __name__ == "__main__":
+    # person = Person(-10)
+    person = Person(10)
+    print(person.age)
+# -------------------------------------------------------
+
+# приклад інкапсуляції через сетери та гетери.
+
+
+class Person:
+    def __init__(self, name: str, age: int, is_active: bool, is_admin: bool):
+        self.name = name
+        self.age = age
+        self._is_active = None
+        self.__is_admin = None
+        self._is_active = is_active
+        self.__is_admin = is_admin
+
+    @property
+    def is_active(self):
+        return self._is_active
+
+    @is_active.setter
+    def is_active(self, value: bool):
+        # Тут можна додати будь-яку логіку перевірки або обробки
+        self._is_active = value
+
+    @property
+    def is_admin(self):
+        return self.__is_admin
+
+    @is_admin.setter
+    def is_admin(self, value: bool):
+        # Тут можна додати будь-яку логіку перевірки або обробки
+        self.__is_admin = value
+
+    def greeting(self):
+        return f"Hi {self.name}"
+
+
+if __name__ == "__main__":
+    print()
+    p = Person("Boris", 34, True, False)
+    print(p.is_admin)  # Використовуємо геттер
+    p.is_admin = True  # Використовуємо сеттер
+    print(p.is_admin)
+# -----------------------------------------------
+ # риклад статичного методу
+
+
+class Geometry:
+    PI = 3.14159
+
+    @staticmethod
+    def area_of_circle(radius):
+        return Geometry.PI * radius ** 2
+
+
+print(Geometry.area_of_circle(5))
+# ---------------------------------------------
+# Наприклад, якщо ми маємо клас Employee,
+# ми можемо використати класовий метод для створення екземплярів класу
+# на основі інформації, отриманої з рядка або файлу.
+
+
+class Employee:
+    def __init__(self, name: str, position: str, age: int) -> None:
+        self.name = name
+        self.position = position
+        self.age = age
+
+    @classmethod
+    def from_string(cls, employee_info):
+        name, position, age = employee_info.split(',')
+        return cls(name, position, int(age))
+
+    # Дороблено самостійно
+    def __repr__(self):
+        return f"Employee(name={self.name}, position={self.position}, age={self.age})"
+
+
+employee_info = "John Doe,Manager,43"
+print(f"This is employee_info : {employee_info}")
+john_doe = Employee.from_string(employee_info)
+print(f"This is Employee.from_string(john_doe): {john_doe}")
+
+print(f"This is john_doe.name: {john_doe.name}")  # Виведе: John Doe
+print(f"This is john_doe.position: {john_doe.position}")  # Виведе: Manager
+print(f"This is john_doe.age: {john_doe.age}")  # Виведе: 43
+
+# дороблено самостійно
+print(
+    f"Employee {john_doe.name}, position {john_doe.position}, age {john_doe.age}")
+# ----------------------------------------------
+
+# приклад тестових рядків, зроблено  через Copilot
+
+# import unittest
+class TestEmployee(unittest.TestCase):
+    def test_employee_init(self):
+        # Тест для конструктора __init__
+        employee = Employee(name="Jane Doe", position="Developer", age=30)
+        self.assertEqual(employee.name, "Jane Doe")
+        self.assertEqual(employee.position, "Developer")
+        self.assertEqual(employee.age, 30)
+
+    def test_employee_from_string(self):
+        # Тест для методa from_string
+        employee_info = "John Doe,Manager,43"
+        employee = Employee.from_string(employee_info)
+        self.assertEqual(employee.name, "John Doe")
+        self.assertEqual(employee.position, "Manager")
+        self.assertEqual(employee.age, 43)
+
+    def test_employee_repr(self):
+        # Тест для методу __repr__
+        employee = Employee(name="John Doe", position="Manager", age=43)
+        self.assertEqual(
+            repr(employee), "Employee(name=John Doe, position=Manager, age=43)")
+
+
+if __name__ == "__main__":
+    unittest.main()
+
+# ----------------------------------------------------------------------------------------
+
+
+
 
