@@ -23,7 +23,7 @@ fifth = Multiplier(4)
 # Виклик функтора
 print(f"This is functor double: {double(5)}")  # Виведе: 10
 print(f"This is functor triple: {triple(3)}")  # Виведе: 9
-print(f"This is functor triple: {fifth(4)}")  # Виведе: 16
+print(f"This is functor fifth: {fifth(4)}")  # Виведе: 16
 # ---------------------------------------
 
 # Розглянемо функтор зі станом.
@@ -389,7 +389,7 @@ if __name__ == '__main__':
 # from contextlib import contextmanager
 
 @contextmanager
-def file_manager(filename, mode='w+', encoding="UTF-8"):
+def file_manager(filename, mode='w+', encoding="UTF-8"):  # w+ додано самостійно
     print("Відкриваємо файл", filename)
     file = open(filename, mode, encoding=encoding)
     try:
@@ -446,3 +446,6 @@ def managed_resource(*args, **kwargs):
 # encoding="utf-8" - додано самостійно для коректного читання
 with managed_resource('new_file.txt', 'r', encoding="utf-8") as f:
     print(f.read())
+# --------------------------------------------
+
+
