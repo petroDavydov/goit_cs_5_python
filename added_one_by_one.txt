@@ -1,0 +1,12 @@
+hotel | 150
+breakfast | 30
+taxi | 15
+lunch | 20
+roof | 1
+doore | 8
+windows | 120
+bar | 2
+whill | 4
+motor | 1
+seat | 6
+handelbar | 1
